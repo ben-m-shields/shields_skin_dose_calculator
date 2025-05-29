@@ -1,0 +1,158 @@
+---
+title: "Peak Skin Dose Estimate"
+output: word_document
+always_allow_html: true
+params:
+  Patient_ID: Patient_ID
+  DOB: DOB
+  Patient_Name: "LASTNAME, Firstname"
+  Gender: "Gender"
+  phantom: phantom
+  summary: summary
+  skin_reactions: skin_reactions
+---
+
+Exposure of `r params$Patient_Name` (`r params$Patient_ID`), DOB: `r params$DOB`, Sex: `r params$Gender`
+
+# Background
+
+The above patient has recently been exposed to a level of ionising radiation in excess of the Substantial Radiation Dose Level (SRDL) stipulated within the facility's Radiation Safety and Protection Plan (RSPP) during one or more fluoroscopically guided procedures. This report will aim to estimate the radiation dose to the patient's skin and identify the expected skin reaction.
+
+# Results
+
+The peak absorbed skin dose resulting from the above-mentioned procedure(s) is estimated to be approximately **`r signif(max(params$phantom$cumulative_skin_dose), 2)` Gy**.
+
+```{r summary, echo=FALSE, tab.cap="Table 1. Summary of the procedure(s) included in this peak skin dose estimate."}
+summary <- params$summary
+summary_figure <- data.frame("Value" = c(sum(summary$Fluoro_Dose_RP_Total), 
+                                         sum(summary$Acquisition_Dose_RP_Total),
+                                         sum(summary$Fluoro_Dose_Area_Product_Total), 
+                                         sum(summary$Acquisition_Dose_Area_Product_Total), 
+                                         sum(summary$Total_Fluoro_Time), 
+                                         sum(summary$Total_Acquisition_Time)),
+                             "Metric" = c("Dose at Reference Point (Gy)","Dose at Reference Point (Gy)",
+                                          "Dose Area Product (Gy.cm2)", "Dose Area Product (Gy.cm2)",
+                                          "Screening Time (s)", "Screening Time (s)"),
+                             "Irradiation_Type" = c("Fluoroscopy", "Acquisition",
+                                                    "Fluoroscopy", "Acquisition",
+                                                    "Fluoroscopy", "Acquisition"))
+
+summary <- t(select(summary, -Patient_ID, -Birth_Date, -Patient_Name, -Gender, -Height_Of_System))
+rownames(summary) <- c("Study Date",
+                       "Study Description",
+                       "Performing Physician",
+                       "Referring Physician",
+                       "Manufacturer",
+                       "Model",
+                       "Serial Number",
+                       "Total Fluoro Dose (Gy)",
+                       "Total Fluoro DAP (Gy.cm2)",
+                       "Total Fluoro Time (s)",
+                       "Total Acquisition Dose (Gy)",
+                       "Total Acquisition DAP (Gy.cm2)",
+                       "Total Acquisition Time (s)")
+kable(summary)
+```
+\newpage
+```{r summary_figure, echo=FALSE, fig.height=8, fig.width=6}
+ggplot(summary_figure, aes(x = Irradiation_Type, y = Value, fill = Irradiation_Type, group = Metric)) +
+  geom_bar(stat = 'identity') + 
+  facet_wrap(~Metric, ncol = 1, scales = 'free') +
+  theme(legend.position="none",
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank())
+```
+
+*Figure 1. Dose metrics included in this peak skin dose estimate.*
+
+\newpage
+
+```{r map, echo=FALSE, warning=FALSE, message=FALSE, out.height=800, out.width=550}
+# m <- list(l=0, r=0, b=0, t=0, pad=0)
+p <- plot_ly(params$phantom, # top left (posterior)
+             x = ~x+abs(min(params$phantom$x, na.rm = TRUE)),
+             y = ~y-min(params$phantom$y, na.rm = TRUE)+0.05,
+             z = ~z+0.15,
+             i = ~i,
+             j = ~j,
+             k = ~k,
+             type = "mesh3d",
+             intensity = ~cumulative_skin_dose,
+             showscale = T,
+             colorbar = list(title = "Gy", len = 1)) %>%
+  add_trace(x = ~x+abs(min(params$phantom$x, na.rm = TRUE)), # top right (right lateral)
+            y = ~z-0.15,
+            z = ~y-max(params$phantom$y, na.rm = TRUE)+0.3,
+            i = ~i,
+            j = ~j,
+            k = ~k,
+            type = "mesh3d",
+            intensity = ~cumulative_skin_dose,
+            showscale = F) %>%
+  add_trace(x = ~x-abs(max(params$phantom$x, na.rm = TRUE)), # bottom left (left lateral)
+            y = ~-z+0.15,
+            z = ~-y-min(params$phantom$y, na.rm = TRUE)-0.3,
+            i = ~i,
+            j = ~j,
+            k = ~k,
+            type = "mesh3d",
+            intensity = ~cumulative_skin_dose,
+            showscale = F) %>%
+  add_trace(x = ~x-abs(max(params$phantom$x, na.rm = TRUE)), # bottom right (anterior)
+            y = ~-y-max(params$phantom$y, na.rm = TRUE)-0.05,
+            z = ~-z-0.15,
+            i = ~i,
+            j = ~j,
+            k = ~k,
+            type = "mesh3d",
+            intensity = ~cumulative_skin_dose,
+            showscale = F) %>%
+  layout(width = 550, height = 800, #margin = m,
+         scene = list(xaxis = list(visible = F),
+                      yaxis = list(visible = F),
+                      zaxis = list(visible = F),
+                      camera = list(eye = list(x = 0,
+                                               y = 0,
+                                               z = abs(min(params$phantom$x, na.rm = TRUE))+max(params$phantom$x, na.rm = TRUE)*1.8)),
+                      aspectratio = list(x = abs(min(params$phantom$x, na.rm = TRUE))+abs(max(params$phantom$x, na.rm = TRUE)),
+                                         y = abs(min(params$phantom$y, na.rm = TRUE))+abs(max(params$phantom$y, na.rm = TRUE)),
+                                         z = abs(min(params$phantom$z, na.rm = TRUE))+abs(max(params$phantom$z, na.rm = TRUE))))) %>%
+  config(displayModeBar = FALSE)
+
+htmlwidgets::saveWidget(widget = p, file = "p.html") # this consumes lots of RAM
+webshot(url = "p.html", file = "p.png", delay = 0 , cliprect = c(0, 0, 550, 800))
+knitr::include_graphics("p.png")
+unlink("p.png")
+unlink("p.html")
+```
+
+*Figure 2. Visualisation of the skin dose to the patient.*
+
+# Discussion
+
+See below table for an indication of the expected skin reaction.
+
+```{r skin_reactions, message=FALSE, echo=FALSE, tab.cap="Table 2. Tissue reactions from single-delivery radiation dose to skin of the neck, torse, pelvis, buttocks, or arms (Balter et al, 2010)."}
+kable(params$skin_reactions)
+```
+
+Insert signature here  
+Author name  
+Position  
+Location  
+`r format(Sys.time(), "%d/%m/%Y")`  
+
+# References
+Andersson, J. et al. (2021) ‘Estimation of patient skin dose in fluoroscopy: Summary of a joint report by AAPM TG357 and EFOMP’, Medical Physics, 48(7), pp. 671–696. doi:10.1002/mp.14910.
+
+Balter, S. et al. (2010) ‘Fluoroscopically guided interventional procedures: A review of radiation effects on patients’ skin and hair’, Radiology, 254(2), pp. 326–341. doi:10.1148/radiol.2542082312.
+
+Benmakhlouf, H. et al. (2011) ‘Backscatter factors and mass energy-absorption coefficient ratios for diagnostic radiology dosimetry’, Physics in Medicine and Biology, 56(22), pp. 7179–7204. doi:10.1088/0031-9155/56/22/012.
+
+ICRP, 2020. Adult mesh-type reference computational phantoms. ICRP Publication 145. Ann. ICRP 49(3).
+
+Khodadadegan, Y. et al. (2010) ‘Automatic monitoring of localized skin dose with fluoroscopic and interventional procedures’, Journal of Digital Imaging, 24(4), pp. 626–639. doi:10.1007/s10278-010-9320-7.
+
+Krajinović, M., Kržanović, N. and Ciraj‐Bjelac, O. (2021) ‘Vendor‐independent skin dose mapping application for interventional radiology and Cardiology’, Journal of Applied Clinical Medical Physics, 22(2), pp. 145–157. doi:10.1002/acm2.13167.
+
+Rana, V.K., Rudin, S. and Bednarek, D.R. (2016) ‘A tracking system to calculate patient skin dose in real-time during neurointerventional procedures using a biplane x-ray imaging system’, Medical Physics, 43(9), pp. 5131–5144. doi:10.1118/1.4960368.
