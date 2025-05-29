@@ -10,6 +10,7 @@ for(i in 1:length(R_packages)){
 
 # Create venv if it doesn't exist
 if(isFALSE(virtualenv_exists("./python_venv"))){
+  install_python(version = "3.10.11")
   virtualenv_create("./python_venv")
 }
 
@@ -23,7 +24,7 @@ for(i in 1:length(py_packages)){
 }
 
 options(chromote.headless = "new")
-options(shiny.error = browser)
+# options(shiny.error = browser)
 
 use_virtualenv("./python_venv", required = TRUE)
 pydicom <- import("pydicom")
