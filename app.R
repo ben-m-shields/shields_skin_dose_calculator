@@ -10,7 +10,7 @@ for(i in 1:length(R_packages)){
 
 # Create venv if it doesn't exist
 if(isFALSE(virtualenv_exists("./python_venv"))){
-  install_python(version = "3.10.11")
+  install_python(version = "3.13.7")
   virtualenv_create("./python_venv")
 }
 
@@ -24,7 +24,6 @@ for(i in 1:length(py_packages)){
 }
 
 options(chromote.headless = "new")
-# options(shiny.error = browser)
 
 use_virtualenv("./python_venv", required = TRUE)
 pydicom <- import("pydicom")
@@ -48,7 +47,8 @@ do_math <- function(RDSR,
                     DAPerrorA,
                     DAPerrorB,
                     hs_length,
-                    hs_width) {
+                    hs_width,
+                    hr_type) {
   
   d <- drop_na(RDSR, Dose_RP) # Remove rows containing NA values
   d <- filter(d, Dose_RP > 0, Dose_Area_Product > 0) # remove rows with 0 values in the Dose_RP and Dose_Area_Product columns as these doses are essentially negligible and field size is unable to be calculated
@@ -176,7 +176,7 @@ do_math <- function(RDSR,
   d$a2 <- d$Positioner_Secondary_Angle*(pi/180) # radians
   d$Distance_Source_to_Isocenter <- ifelse(is.na(d$Distance_Source_to_Isocenter), round(mean(drop_na(d, Distance_Source_to_Isocenter)$Distance_Source_to_Isocenter), 0), d$Distance_Source_to_Isocenter) # if Distance_Source_to_Isocenter contains NA values, replace with the average of the non-NA values (usually Philips issue).
   d$Distance_Source_to_Isocenter <- ifelse(d$Distance_Source_to_Isocenter == 0, round(mean(drop_na(d, Distance_Source_to_Isocenter)$Distance_Source_to_Isocenter), 0), d$Distance_Source_to_Isocenter) # if Distance_Source_to_Isocenter contains values of 0, replace with the average of the non-0 values (usually Philips issue).
-  d$radius <- d$Distance_Source_to_Isocenter/1000 # Dist Source to the C-arm Isocenter
+  d$radius <- d$Distance_Source_to_Isocenter/1000 # Dist Source to the C-arm Isocenter (m)
   d$TLongInc <- (d$Table_Longitudinal_Position+d$Table_Longitudinal_home_position)/1000 # Table longitudinal increment
   d$TLatInc <- (d$Table_Lateral_Position+d$Table_Lateral_home_position)/1000 # Table lateral increment
   d$THeightInc <- ifelse(Manufacturer == "Philips" | Manufacturer == "Philips Medical Systems", (Height_Of_System-d$Table_Height_Position+d$Table_height_home_position)/1000,
@@ -185,7 +185,14 @@ do_math <- function(RDSR,
   d$dh <- dh # Horiz dist from patient origin to the head of table
   d$TL <- TL # Table Length
   d$table_width <- table_width
-  d$HR <- HR # Hit rejection plane
+  
+  # define the hit rejection plane
+  if (hr_type == "Reject all hits occuring beyond the isocentre") {
+    d$HR <- d$Distance_Source_to_Detector - d$radius
+  } else {
+    d$HR <- HR
+  }
+  
   
   # Define variables outlined in Table 2
   d$IstoTable <- d$TL/2 # IStoTable is the Horizontal distance from isocenter toward patient head to the edge of table—head first position
@@ -251,12 +258,12 @@ do_math <- function(RDSR,
   d$z_dc4 <- d$z_det+d$l_d/2*d$v1_z+d$l_d/2*d$v2_z
   
   # Hit rejection Coords
-  d$x_HR <- (-d$x_spot+d$x_RF)/(d$radius-0.15)*(d$Distance_Source_to_Detector-HR)+d$x_spot # eq 7 (modified)
-  d$y_HR <- (-d$y_spot+d$y_RF)/(d$radius-0.15)*(d$Distance_Source_to_Detector-HR)+d$y_spot # eq 7 (modified)
-  d$z_HR <- (-d$z_spot+d$z_RF)/(d$radius-0.15)*(d$Distance_Source_to_Detector-HR)+d$z_spot # eq 7 (modified)
+  d$x_HR <- (-d$x_spot+d$x_RF)/(d$radius-0.15)*(d$Distance_Source_to_Detector-d$HR)+d$x_spot # eq 7 (modified)
+  d$y_HR <- (-d$y_spot+d$y_RF)/(d$radius-0.15)*(d$Distance_Source_to_Detector-d$HR)+d$y_spot # eq 7 (modified)
+  d$z_HR <- (-d$z_spot+d$z_RF)/(d$radius-0.15)*(d$Distance_Source_to_Detector-d$HR)+d$z_spot # eq 7 (modified)
   
   # side length at hit rejection point
-  d$l_HR <- d$l/(d$radius-0.15)*(d$Distance_Source_to_Detector-HR)
+  d$l_HR <- d$l/(d$radius-0.15)*(d$Distance_Source_to_Detector-d$HR)
   
   # corners at hit rejection point
   # corner 1, eq 17
@@ -386,7 +393,6 @@ do_math <- function(RDSR,
 }
 
 calculate_IE <- function(d, patient_phantom) {
-  
   for (i in 1:nrow(d)) {
     patient_phantom$z_flat <- patient_phantom$z + 0.03
     patient_phantom$z_flat <- ifelse(patient_phantom$z_flat > 0, 0, patient_phantom$z_flat)
@@ -429,7 +435,7 @@ calculate_IE <- function(d, patient_phantom) {
 
 ui <- fluidPage(
   add_busy_spinner(spin = "circle"),
-  titlePanel("skin dose calculator"),
+  titlePanel("Shields skin dose calculator"),
   modalDialog(title = "Warning",
               HTML("Calculations performed by this software are an estimation.<br><br>"),
               size = "l",
@@ -438,36 +444,50 @@ ui <- fluidPage(
               footer = NULL),
   sidebarLayout(
     sidebarPanel(
-      width = 3,
+      width = 4,
       strong("Import system configuration"),
       fileInput("import_config", label  = NULL, accept = c(".rds")),
       fileInput("RDSR_dcm", "Import RDSR (.dcm)"),
       radioButtons("input_phantom", label = NULL, choices = c("New skin dose estimation",
                                                               "Append to existing skin dose estimation")),
       conditionalPanel(condition = "input.input_phantom == 'New skin dose estimation'",
-                       selectInput("patient_phantom", "Select patient phantom", choices = c("", "ICRP145 Adult Male", "ICRP145 Adult Female", "130 cm, 30 kg", "140 cm, 40 kg", "150 cm, 60 kg","160 cm, 70 kg", "170 cm, 80 kg", "180 cm, 90 kg", "190 cm, 100 kg", "200 cm, 110 kg", "cow"), selected = "")),
+                       selectInput("patient_phantom", "Select patient phantom", choices = c("", 
+                                                                                            "ICRP145 Adult Male", 
+                                                                                            "ICRP145 Adult Female", 
+                                                                                            "ICRP156 00M", 
+                                                                                            "ICRP156 00F", 
+                                                                                            "ICRP156 01M", 
+                                                                                            "ICRP156 01F", 
+                                                                                            "ICRP156 05M", 
+                                                                                            "ICRP156 05F",
+                                                                                            "ICRP156 10M", 
+                                                                                            "ICRP156 10F", 
+                                                                                            "ICRP156 15M",
+                                                                                            "ICRP156 15F",
+                                                                                            "cow"), selected = ""),
+                       p(HTML("<br>"))),
       conditionalPanel(condition = "input.input_phantom == 'Append to existing skin dose estimation'",
                        fileInput("patient_phantom", "Upload previous skin dose estimation", accept = c(".rds"))),
-      actionButton("calculate_PSD", "Calculate"),
-      downloadButton("report", "Download Report"),
-      downloadButton("phantom", "Download Data"),
-      HTML("<br><br>"),
-      splitLayout(cellWidths = c(75, 400),
-                  numericInput("HR", NULL, value = 0.15, step = 0.05),
-                  strong("Distance from hit rejection plane to detector (m)")),
-      splitLayout(cellWidths = c(75, 400),
-                  numericInput("dh", NULL, value = 0.15, step = 0.05),
-                  strong("Distance from patient head to end of table (m)"))),
+      radioButtons("hr_type", label = NULL, choices = c("Reject all hits occuring beyond the isocentre",
+                                                        "Set a hit rejection distance from the image receptor")),
+      conditionalPanel(condition = "input.hr_type == 'Set a hit rejection distance from the image receptor'",
+                       numericInput("HR", "Hit rejection plane to detector distance (m)", value = 0.15, step = 0.05)),
+      numericInput("dh", "Distance from patient head to end of table (m)", value = 0.15, step = 0.05),
+      actionButton("calculate_PSD", "Calculate Peak Skin Dose"),
+      downloadButton("report", "Download Report (.docx)"),
+      downloadButton("phantom", "Download Skin Dose Data")),
     mainPanel(
-      width = 9,
+      width = 8,
       tabsetPanel(type = "tabs",
                   tabPanel("Cumulative Skin Dose",
                            plotlyOutput("cumulative", height = "800px")),
                   tabPanel("Irradiation Event Visualisation",
-                           splitLayout(cellWidths = c(120, 80, 100),
+                           splitLayout(cellWidths = c(120, 80, 100, 500),
                                        strong(HTML("Irradiation Event")),
                                        numericInput("IE", NULL, value = 1, min = 1, width = '75px'),
-                                       textOutput("no_of_IE")),
+                                       textOutput("no_of_IE"),
+                                       radioButtons("ie_type", NULL, choices = c("Display skin dose for individual irradiation event",
+                                                                                 "Display cumulative skin dose"))),
                            plotlyOutput("visualisation", height = "700px")),
                   tabPanel("Procedure Details",
                            splitLayout(cellWidths = c("80%", "20%"),
@@ -517,7 +537,9 @@ ui <- fluidPage(
                              card(plotlyOutput("DAPerrorB")))),
                   tabPanel("Mathematics/Physics/Validation",
                            HTML("Use the arrow keys to navigate the below presentation. This works best in Mozilla Firefox.<br>"),
-                           htmlOutput("presentation"))))))
+                           htmlOutput("presentation"))
+                  # , tabPanel("d",DT::dataTableOutput("d"))
+      ))))
 
 
 server <- function(input, output, session) {
@@ -599,15 +621,13 @@ server <- function(input, output, session) {
     } else {
       summary <- rbind(study_details(), previous_summary())
     } 
-    # summary$Study_Date <- format(ymd(summary$Study_Date), "%d/%m/%Y")
-    # summary$Birth_Date <- format(ymd(summary$Birth_Date), "%d/%m/%Y")
     return(summary)
   })
   
   summary_display <- eventReactive(d(), {
     summary_display <- summary()
-    summary_display$Study_Date <- format(ymd(summary_display$Study_Date), "%d/%m/%Y")
-    summary_display$Birth_Date <- format(ymd(summary_display$Birth_Date), "%d/%m/%Y")
+    summary_display$Study_Date <- as.character(format(ymd(summary_display$Study_Date), "%d/%m/%Y"))
+    summary_display$Birth_Date <- as.character(format(ymd(summary_display$Birth_Date), "%d/%m/%Y"))
     summary_display <- t(summary_display)
     rownames(summary_display) <- c("Study Date",
                                    "Study Description",
@@ -652,7 +672,10 @@ server <- function(input, output, session) {
                                                   input$DAPerrorA,
                                                   input$DAPerrorB,
                                                   input$hs_length,
-                                                  input$hs_width))
+                                                  input$hs_width,
+                                                  input$hr_type))
+  
+  output$d = DT::renderDataTable(d())
   
   cumulative_patient_phantom <- eventReactive(d(), calculate_IE(d(), patient_phantom()))
   
@@ -682,8 +705,17 @@ server <- function(input, output, session) {
                                                           zaxis = list(title = "Height (z)", range =c(1, -1), tickvals = c(1, 0.5, 0, -0.5, -1)),
                                                           camera = list(eye = list(x = 0.1, y = 0, z = -2)),
                                                           aspectratio = list(x =2.5, y = 2, z = 2))))
+  IE_patient_phantom <- reactive({
+    if (input$ie_type == "Display cumulative skin dose") {
+      message("Using cumulative")
+      calculate_IE(d()[1:input$IE , ], patient_phantom())
+    } else {
+      message("Using single frame")
+      calculate_IE(d()[input$IE , ], patient_phantom())
+    }
+  })
   
-  IE_patient_phantom <- reactive(calculate_IE(d()[input$IE ,], patient_phantom()))
+  
   
   output$DAPerrorA <- renderPlotly(plot_ly(x = c("kV<60", "60≤kV<70", "70≤kV<80", "80≤kV<90", "90≤kV<100", "100≤kV<110", "110≤kV<120", "kV≥120"),
                                            y = c("FS≥35x35cm", "30x30≤FS<35x35cm", "25x25≤FS<30x30cm", "20x20≤FS<25x25cm", "15x15≤FS<20x20cm", "10x10≤FS<15x15cm", "FS<10x10cm"),
@@ -806,7 +838,7 @@ server <- function(input, output, session) {
                                                   k = ~ IE_patient_phantom()$k,
                                                   type = "mesh3d",
                                                   opacity = 0.5,
-                                                  intensity = ~IE_patient_phantom()$irradiation_event_skin_dose*1000,
+                                                  intensity = ~IE_patient_phantom()$cumulative_skin_dose*1000,
                                                   showscale = TRUE,
                                                   colorbar = list(title = "mGy", yanchor = "top", len = 1, yref = "container", y = 1),
                                                   hovertext = ~paste(" Skin irradiated:", IE_patient_phantom()$`is point irradiated?`, "<br>",
@@ -920,4 +952,4 @@ server <- function(input, output, session) {
                                        output_file = file,
                                        envir = new.env(parent = globalenv()))})
 }
-shinyApp(ui, server)
+shinyApp(ui, server, options = list(port = 3838))

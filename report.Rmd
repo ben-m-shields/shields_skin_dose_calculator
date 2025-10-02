@@ -1,6 +1,6 @@
 ---
 title: "Peak Skin Dose Estimate"
-output: word_document
+output: html_document
 always_allow_html: true
 params:
   Patient_ID: Patient_ID
@@ -12,7 +12,7 @@ params:
   skin_reactions: skin_reactions
 ---
 
-Exposure of `r params$Patient_Name` (`r params$Patient_ID`), DOB: `r params$DOB`, Sex: `r params$Gender`
+Exposure of `r params$Patient_Name` (`r params$Patient_ID`), DOB: `r format(ymd(params$DOB), "%d/%m/%Y")`, Sex: `r params$Gender`
 
 # Background
 
@@ -24,11 +24,12 @@ The peak absorbed skin dose resulting from the above-mentioned procedure(s) is e
 
 ```{r summary, echo=FALSE, tab.cap="Table 1. Summary of the procedure(s) included in this peak skin dose estimate."}
 summary <- params$summary
-summary_figure <- data.frame("Value" = c(sum(summary$Fluoro_Dose_RP_Total), 
+
+summary_figure <- data.frame("Value" = c(sum(summary$Fluoro_Dose_RP_Total),
                                          sum(summary$Acquisition_Dose_RP_Total),
-                                         sum(summary$Fluoro_Dose_Area_Product_Total), 
-                                         sum(summary$Acquisition_Dose_Area_Product_Total), 
-                                         sum(summary$Total_Fluoro_Time), 
+                                         sum(summary$Fluoro_Dose_Area_Product_Total),
+                                         sum(summary$Acquisition_Dose_Area_Product_Total),
+                                         sum(summary$Total_Fluoro_Time),
                                          sum(summary$Total_Acquisition_Time)),
                              "Metric" = c("Dose at Reference Point (Gy)","Dose at Reference Point (Gy)",
                                           "Dose Area Product (Gy.cm2)", "Dose Area Product (Gy.cm2)",
@@ -68,7 +69,6 @@ ggplot(summary_figure, aes(x = Irradiation_Type, y = Value, fill = Irradiation_T
 \newpage
 
 ```{r map, echo=FALSE, warning=FALSE, message=FALSE, out.height=800, out.width=550}
-# m <- list(l=0, r=0, b=0, t=0, pad=0)
 p <- plot_ly(params$phantom, # top left (posterior)
              x = ~x+abs(min(params$phantom$x, na.rm = TRUE)),
              y = ~y-min(params$phantom$y, na.rm = TRUE)+0.05,
@@ -132,8 +132,10 @@ unlink("p.html")
 
 See below table for an indication of the expected skin reaction.
 
-```{r skin_reactions, message=FALSE, echo=FALSE, tab.cap="Table 2. Tissue reactions from single-delivery radiation dose to skin of the neck, torse, pelvis, buttocks, or arms (Balter et al, 2010)."}
-kable(params$skin_reactions)
+*Table 2. Tissue reactions from single-delivery radiation dose to skin of the neck, torso, pelvis, buttocks, or arms (Balter et al, 2010).*
+
+```{r skin_reactions, message=FALSE, echo=FALSE}
+knitr::include_graphics("skin_reactions.png")
 ```
 
 Insert signature here  
@@ -150,6 +152,8 @@ Balter, S. et al. (2010) ‘Fluoroscopically guided interventional procedures: A
 Benmakhlouf, H. et al. (2011) ‘Backscatter factors and mass energy-absorption coefficient ratios for diagnostic radiology dosimetry’, Physics in Medicine and Biology, 56(22), pp. 7179–7204. doi:10.1088/0031-9155/56/22/012.
 
 ICRP, 2020. Adult mesh-type reference computational phantoms. ICRP Publication 145. Ann. ICRP 49(3).
+
+ICRP, 2024. Paediatric mesh-type reference computational phantoms. ICRP Publication 156. Ann. ICRP 53(1-2)
 
 Khodadadegan, Y. et al. (2010) ‘Automatic monitoring of localized skin dose with fluoroscopic and interventional procedures’, Journal of Digital Imaging, 24(4), pp. 626–639. doi:10.1007/s10278-010-9320-7.
 
