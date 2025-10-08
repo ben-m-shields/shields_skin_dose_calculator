@@ -444,7 +444,7 @@ ui <- fluidPage(
               footer = NULL),
   sidebarLayout(
     sidebarPanel(
-      width = 4,
+      width = 3,
       strong("Import system configuration"),
       fileInput("import_config", label  = NULL, accept = c(".rds")),
       fileInput("RDSR_dcm", "Import RDSR (.dcm)"),
