@@ -1,6 +1,6 @@
 ---
 title: "Peak Skin Dose Estimate"
-output: html_document
+output: word_document
 always_allow_html: true
 params:
   Patient_ID: Patient_ID
