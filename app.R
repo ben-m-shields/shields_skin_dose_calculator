@@ -10,7 +10,7 @@ for(i in 1:length(R_packages)){
 
 # Create venv if it doesn't exist
 if(isFALSE(virtualenv_exists("./python_venv"))){
-  install_python(version = "3.13.7")
+  # install_python(version = "3.13.7")
   virtualenv_create("./python_venv")
 }
 

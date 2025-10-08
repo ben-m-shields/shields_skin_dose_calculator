@@ -1,0 +1,580 @@
+Setup,System,dose_to_skin_mGy,Calculator,percentage_accuracy
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,CareMonitor,1.76
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,CareMonitor,1.58
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,CareMonitor,1.42
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,CareMonitor,1.39
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,CareMonitor,1.35
+PA,Siemens ARTIS Zee biplane,337,CareMonitor,0.90
+PA LAO,Siemens ARTIS Zee biplane,527,CareMonitor,0.82
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,CareMonitor,0.87
+LAT,Siemens ARTIS Zee biplane,891,CareMonitor,0.82
+SP1,Siemens ARTIS Zee biplane,875,CareMonitor,0.72
+SP2,Siemens ARTIS Zee biplane,907,CareMonitor,0.92
+SP3,Siemens ARTIS Zee biplane,847,CareMonitor,0.80
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,CAATSDOSE,1.75
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,CAATSDOSE,1.64
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,CAATSDOSE,1.44
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,CAATSDOSE,1.33
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,CAATSDOSE,1.23
+PA,Siemens ARTIS Zee biplane,337,CAATSDOSE,0.99
+PA LAO,Siemens ARTIS Zee biplane,527,CAATSDOSE,0.90
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,CAATSDOSE,0.97
+LAT,Siemens ARTIS Zee biplane,891,CAATSDOSE,0.78
+SP1,Siemens ARTIS Zee biplane,875,CAATSDOSE,0.70
+SP2,Siemens ARTIS Zee biplane,907,CAATSDOSE,0.69
+SP3,Siemens ARTIS Zee biplane,847,CAATSDOSE,0.48
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,SDM flat,1.51
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,SDM flat,1.47
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,SDM flat,1.32
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,SDM flat,1.22
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,SDM flat,1.17
+PA,Siemens ARTIS Zee biplane,337,SDM flat,0.91
+PA LAO,Siemens ARTIS Zee biplane,527,SDM flat,0.82
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,SDM flat,0.87
+LAT,Siemens ARTIS Zee biplane,891,SDM flat,
+SP1,Siemens ARTIS Zee biplane,875,SDM flat,0.61
+SP2,Siemens ARTIS Zee biplane,907,SDM flat,0.75
+SP3,Siemens ARTIS Zee biplane,847,SDM flat,0.72
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,DOSE,1.20
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,DOSE,1.18
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,DOSE,1.07
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,DOSE,0.99
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,DOSE,0.98
+PA,Siemens ARTIS Zee biplane,337,DOSE,0.78
+PA LAO,Siemens ARTIS Zee biplane,527,DOSE,0.69
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,DOSE,0.74
+LAT,Siemens ARTIS Zee biplane,891,DOSE,0.88
+SP1,Siemens ARTIS Zee biplane,875,DOSE,0.43
+SP2,Siemens ARTIS Zee biplane,907,DOSE,0.52
+SP3,Siemens ARTIS Zee biplane,847,DOSE,0.57
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,RDM,1.45
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,RDM,1.38
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,RDM,1.20
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,RDM,1.11
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,RDM,1.02
+PA,Siemens ARTIS Zee biplane,337,RDM,0.86
+PA LAO,Siemens ARTIS Zee biplane,527,RDM,0.76
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,RDM,0.81
+LAT,Siemens ARTIS Zee biplane,891,RDM,0.34
+SP1,Siemens ARTIS Zee biplane,875,RDM,0.61
+SP2,Siemens ARTIS Zee biplane,907,RDM,0.66
+SP3,Siemens ARTIS Zee biplane,847,RDM,0.68
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,EM.dose,1.59
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,EM.dose,1.47
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,EM.dose,1.28
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,EM.dose,1.19
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,EM.dose,1.09
+PA,Siemens ARTIS Zee biplane,337,EM.dose,0.84
+PA LAO,Siemens ARTIS Zee biplane,527,EM.dose,0.77
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,EM.dose,0.83
+LAT,Siemens ARTIS Zee biplane,891,EM.dose,
+SP1,Siemens ARTIS Zee biplane,875,EM.dose,0.66
+SP2,Siemens ARTIS Zee biplane,907,EM.dose,0.64
+SP3,Siemens ARTIS Zee biplane,847,EM.dose,0.74
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,OpenSkin,2.01
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,OpenSkin,1.86
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,OpenSkin,1.62
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,OpenSkin,1.50
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,OpenSkin,1.38
+PA,Siemens ARTIS Zee biplane,337,OpenSkin,1.07
+PA LAO,Siemens ARTIS Zee biplane,527,OpenSkin,0.95
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,OpenSkin,1.02
+LAT,Siemens ARTIS Zee biplane,891,OpenSkin,
+SP1,Siemens ARTIS Zee biplane,875,OpenSkin,0.79
+SP2,Siemens ARTIS Zee biplane,907,OpenSkin,0.78
+SP3,Siemens ARTIS Zee biplane,847,OpenSkin,0.83
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,SkinCare,1.27
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,SkinCare,1.20
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,SkinCare,1.05
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,SkinCare,0.97
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,SkinCare,0.90
+PA,Siemens ARTIS Zee biplane,337,SkinCare,0.73
+PA LAO,Siemens ARTIS Zee biplane,527,SkinCare,0.66
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,SkinCare,0.70
+LAT,Siemens ARTIS Zee biplane,891,SkinCare,0.79
+SP1,Siemens ARTIS Zee biplane,875,SkinCare,0.78
+SP2,Siemens ARTIS Zee biplane,907,SkinCare,0.75
+SP3,Siemens ARTIS Zee biplane,847,SkinCare,0.65
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,SDM ICRP,1.48
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,SDM ICRP,1.43
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,SDM ICRP,1.28
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,SDM ICRP,1.19
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,SDM ICRP,1.16
+PA,Siemens ARTIS Zee biplane,337,SDM ICRP,0.90
+PA LAO,Siemens ARTIS Zee biplane,527,SDM ICRP,0.80
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,SDM ICRP,0.84
+LAT,Siemens ARTIS Zee biplane,891,SDM ICRP,1.22
+SP1,Siemens ARTIS Zee biplane,875,SDM ICRP,0.71
+SP2,Siemens ARTIS Zee biplane,907,SDM ICRP,0.73
+SP3,Siemens ARTIS Zee biplane,847,SDM ICRP,0.69
+"10cm PMMA
+92kVp 3.8mmAl",Siemens ARTIS Zee biplane,355,This Tool,1.32
+"15cm PMMA
+100kVp 4.2mmAl",Siemens ARTIS Zee biplane,475,This Tool,1.18
+"20cm PMMA
+108kVp 4.3mmAl",Siemens ARTIS Zee biplane,584,This Tool,1.04
+"25cm PMMA
+109kVp 4.2mmAl",Siemens ARTIS Zee biplane,1338,This Tool,0.96
+"30cm PMMA
+125kVp 4.8mmAl",Siemens ARTIS Zee biplane,1744,This Tool,0.78
+PA,Siemens ARTIS Zee biplane,337,This Tool,1.22
+PA LAO,Siemens ARTIS Zee biplane,527,This Tool,0.92
+PA LAO CRAN,Siemens ARTIS Zee biplane,760,This Tool,0.98
+LAT,Siemens ARTIS Zee biplane,891,This Tool,0.80
+SP1,Siemens ARTIS Zee biplane,875,This Tool,0.72
+SP2,Siemens ARTIS Zee biplane,907,This Tool,0.87
+SP3,Siemens ARTIS Zee biplane,847,This Tool,0.89
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,DoseMap,1.39
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,DoseMap,1.55
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,DoseMap,1.55
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,DoseMap,1.09
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,DoseMap,0.97
+PA,GE Innova IGS 540,366,DoseMap,1.15
+PA LAO,GE Innova IGS 540,361,DoseMap,1.16
+PA LAO CRAN,GE Innova IGS 540,316,DoseMap,1.26
+LAT,GE Innova IGS 540,481,DoseMap,1.21
+SP1,GE Innova IGS 540,663,DoseMap,1.14
+SP2,GE Innova IGS 540,744,DoseMap,1.02
+SP3,GE Innova IGS 540,732,DoseMap,0.91
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,CAATSDOSE,1.08
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,CAATSDOSE,1.20
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,CAATSDOSE,1.21
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,CAATSDOSE,1.29
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,CAATSDOSE,1.24
+PA,GE Innova IGS 540,366,CAATSDOSE,0.91
+PA LAO,GE Innova IGS 540,361,CAATSDOSE,0.91
+PA LAO CRAN,GE Innova IGS 540,316,CAATSDOSE,1.01
+LAT,GE Innova IGS 540,481,CAATSDOSE,0.75
+SP1,GE Innova IGS 540,663,CAATSDOSE,0.78
+SP2,GE Innova IGS 540,744,CAATSDOSE,0.80
+SP3,GE Innova IGS 540,732,CAATSDOSE,0.80
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,SDM flat,0.92
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,SDM flat,1.02
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,SDM flat,1.03
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,SDM flat,1.11
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,SDM flat,1.15
+PA,GE Innova IGS 540,366,SDM flat,1.02
+PA LAO,GE Innova IGS 540,361,SDM flat,1.00
+PA LAO CRAN,GE Innova IGS 540,316,SDM flat,1.10
+LAT,GE Innova IGS 540,481,SDM flat,
+SP1,GE Innova IGS 540,663,SDM flat,1.29
+SP2,GE Innova IGS 540,744,SDM flat,1.11
+SP3,GE Innova IGS 540,732,SDM flat,1.06
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,DOSE,0.80
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,DOSE,0.85
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,DOSE,0.89
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,DOSE,0.96
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,DOSE,1.00
+PA,GE Innova IGS 540,366,DOSE,0.65
+PA LAO,GE Innova IGS 540,361,DOSE,0.61
+PA LAO CRAN,GE Innova IGS 540,316,DOSE,0.70
+LAT,GE Innova IGS 540,481,DOSE,1.02
+SP1,GE Innova IGS 540,663,DOSE,0.71
+SP2,GE Innova IGS 540,744,DOSE,0.67
+SP3,GE Innova IGS 540,732,DOSE,0.59
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,RDM,0.96
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,RDM,1.07
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,RDM,1.07
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,RDM,1.14
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,RDM,1.05
+PA,GE Innova IGS 540,366,RDM,0.90
+PA LAO,GE Innova IGS 540,361,RDM,0.95
+PA LAO CRAN,GE Innova IGS 540,316,RDM,1.04
+LAT,GE Innova IGS 540,481,RDM,0.67
+SP1,GE Innova IGS 540,663,RDM,0.98
+SP2,GE Innova IGS 540,744,RDM,0.96
+SP3,GE Innova IGS 540,732,RDM,0.90
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,EM.dose,0.96
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,EM.dose,1.07
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,EM.dose,1.08
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,EM.dose,1.14
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,EM.dose,1.07
+PA,GE Innova IGS 540,366,EM.dose,0.85
+PA LAO,GE Innova IGS 540,361,EM.dose,0.84
+PA LAO CRAN,GE Innova IGS 540,316,EM.dose,0.93
+LAT,GE Innova IGS 540,481,EM.dose,
+SP1,GE Innova IGS 540,663,EM.dose,1.17
+SP2,GE Innova IGS 540,744,EM.dose,1.03
+SP3,GE Innova IGS 540,732,EM.dose,0.91
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,OpenSkin,1.21
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,OpenSkin,1.34
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,OpenSkin,1.35
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,OpenSkin,1.46
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,OpenSkin,1.35
+PA,GE Innova IGS 540,366,OpenSkin,1.01
+PA LAO,GE Innova IGS 540,361,OpenSkin,0.98
+PA LAO CRAN,GE Innova IGS 540,316,OpenSkin,1.07
+LAT,GE Innova IGS 540,481,OpenSkin,
+SP1,GE Innova IGS 540,663,OpenSkin,0.92
+SP2,GE Innova IGS 540,744,OpenSkin,1.04
+SP3,GE Innova IGS 540,732,OpenSkin,0.94
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,SkinCare,0.90
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,SkinCare,1.00
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,SkinCare,1.01
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,SkinCare,1.09
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,SkinCare,1.07
+PA,GE Innova IGS 540,366,SkinCare,0.76
+PA LAO,GE Innova IGS 540,361,SkinCare,0.76
+PA LAO CRAN,GE Innova IGS 540,316,SkinCare,0.83
+LAT,GE Innova IGS 540,481,SkinCare,1.13
+SP1,GE Innova IGS 540,663,SkinCare,1.00
+SP2,GE Innova IGS 540,744,SkinCare,0.86
+SP3,GE Innova IGS 540,732,SkinCare,0.80
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,SDM ICRP,0.91
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,SDM ICRP,1.01
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,SDM ICRP,1.02
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,SDM ICRP,1.10
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,SDM ICRP,1.13
+PA,GE Innova IGS 540,366,SDM ICRP,0.96
+PA LAO,GE Innova IGS 540,361,SDM ICRP,0.96
+PA LAO CRAN,GE Innova IGS 540,316,SDM ICRP,1.02
+LAT,GE Innova IGS 540,481,SDM ICRP,2.07
+SP1,GE Innova IGS 540,663,SDM ICRP,1.27
+SP2,GE Innova IGS 540,744,SDM ICRP,1.05
+SP3,GE Innova IGS 540,732,SDM ICRP,1.01
+"10cm PMMA
+67kVp 5.3mmAl",GE Innova IGS 540,115,This Tool,0.96
+"15cm PMMA
+67kVp 4.7mmAl",GE Innova IGS 540,207,This Tool,1.00
+"20cm PMMA
+67kVp 4.8mmAl",GE Innova IGS 540,207,This Tool,1.01
+"25cm PMMA
+71kVp 3.4mmAl",GE Innova IGS 540,367,This Tool,1.06
+"30cm PMMA
+93kVp 4.4mmAl",GE Innova IGS 540,495,This Tool,1.06
+PA,GE Innova IGS 540,366,This Tool,0.78
+PA LAO,GE Innova IGS 540,361,This Tool,0.83
+PA LAO CRAN,GE Innova IGS 540,316,This Tool,0.90
+LAT,GE Innova IGS 540,481,This Tool,0.82
+SP1,GE Innova IGS 540,663,This Tool,0.99
+SP2,GE Innova IGS 540,744,This Tool,0.92
+SP3,GE Innova IGS 540,732,This Tool,0.90
+"10cm PMMA
+74kVp 4.6mmAl",Canon Infinix CF-I biplane,140,DTS,0.95
+"15cm PMMA
+74kVp 4.7mmAl",Canon Infinix CF-I biplane,236,DTS,0.86
+"20cm PMMA
+83kVp 7.2mmAl",Canon Infinix CF-I biplane,565,DTS,0.82
+"25cm PMMA
+105kVp 6.3mmAl",Canon Infinix CF-I biplane,372,DTS,1.41
+"30cm PMMA
+125kVp 7.2mmAl",Canon Infinix CF-I biplane,544,DTS,1.55
+PA,Canon Infinix CF-I biplane,442,DTS,1.11
+PA LAO,Canon Infinix CF-I biplane,1344,DTS,1.06
+PA LAO CRAN,Canon Infinix CF-I biplane,1924,DTS,1.34
+LAT,Canon Infinix CF-I biplane,704,DTS,1.61
+SP1,Canon Infinix CF-I biplane,1040,DTS,0.85
+SP2,Canon Infinix CF-I biplane,1066,DTS,0.84
+SP3,Canon Infinix CF-I biplane,970,DTS,0.72
+"10cm PMMA
+74kVp 4.6mmAl",Canon Infinix CF-I biplane,140,CAATSDOSE,1.05
+"15cm PMMA
+74kVp 4.7mmAl",Canon Infinix CF-I biplane,236,CAATSDOSE,1.02
+"20cm PMMA
+83kVp 7.2mmAl",Canon Infinix CF-I biplane,565,CAATSDOSE,0.96
+"25cm PMMA
+105kVp 6.3mmAl",Canon Infinix CF-I biplane,372,CAATSDOSE,1.00
+"30cm PMMA
+125kVp 7.2mmAl",Canon Infinix CF-I biplane,544,CAATSDOSE,0.90
+PA,Canon Infinix CF-I biplane,442,CAATSDOSE,1.28
+PA LAO,Canon Infinix CF-I biplane,1344,CAATSDOSE,0.85
+PA LAO CRAN,Canon Infinix CF-I biplane,1924,CAATSDOSE,0.72
+LAT,Canon Infinix CF-I biplane,704,CAATSDOSE,0.86
+SP1,Canon Infinix CF-I biplane,1040,CAATSDOSE,0.81
+SP2,Canon Infinix CF-I biplane,1066,CAATSDOSE,0.84
+SP3,Canon Infinix CF-I biplane,970,CAATSDOSE,0.72
+SP1,Canon Infinix CF-I biplane,1040,DOSE,1.09
+SP2,Canon Infinix CF-I biplane,1066,DOSE,0.96
+SP3,Canon Infinix CF-I biplane,970,DOSE,0.84
+"10cm PMMA
+74kVp 4.6mmAl",Canon Infinix CF-I biplane,140,EM.dose,0.91
+"15cm PMMA
+74kVp 4.7mmAl",Canon Infinix CF-I biplane,236,EM.dose,0.85
+"20cm PMMA
+83kVp 7.2mmAl",Canon Infinix CF-I biplane,565,EM.dose,0.82
+"25cm PMMA
+105kVp 6.3mmAl",Canon Infinix CF-I biplane,372,EM.dose,0.85
+"30cm PMMA
+125kVp 7.2mmAl",Canon Infinix CF-I biplane,544,EM.dose,0.75
+PA,Canon Infinix CF-I biplane,442,EM.dose,1.09
+PA LAO,Canon Infinix CF-I biplane,1344,EM.dose,0.72
+PA LAO CRAN,Canon Infinix CF-I biplane,1924,EM.dose,0.61
+LAT,Canon Infinix CF-I biplane,704,EM.dose,NA
+SP1,Canon Infinix CF-I biplane,1040,EM.dose,0.73
+SP2,Canon Infinix CF-I biplane,1066,EM.dose,0.74
+SP3,Canon Infinix CF-I biplane,970,EM.dose,0.83
+"10cm PMMA
+74kVp 4.6mmAl",Canon Infinix CF-I biplane,140,OpenSkin,1.03
+"15cm PMMA
+74kVp 4.7mmAl",Canon Infinix CF-I biplane,236,OpenSkin,1.00
+"20cm PMMA
+83kVp 7.2mmAl",Canon Infinix CF-I biplane,565,OpenSkin,0.93
+"25cm PMMA
+105kVp 6.3mmAl",Canon Infinix CF-I biplane,372,OpenSkin,0.99
+"30cm PMMA
+125kVp 7.2mmAl",Canon Infinix CF-I biplane,544,OpenSkin,0.88
+PA,Canon Infinix CF-I biplane,442,OpenSkin,1.23
+PA LAO,Canon Infinix CF-I biplane,1344,OpenSkin,0.80
+PA LAO CRAN,Canon Infinix CF-I biplane,1924,OpenSkin,0.68
+LAT,Canon Infinix CF-I biplane,704,OpenSkin,NA
+SP1,Canon Infinix CF-I biplane,1040,OpenSkin,0.83
+SP2,Canon Infinix CF-I biplane,1066,OpenSkin,0.79
+SP3,Canon Infinix CF-I biplane,970,OpenSkin,0.86
+"10cm PMMA
+74kVp 4.6mmAl",Canon Infinix CF-I biplane,140,SkinCare,0.95
+"15cm PMMA
+74kVp 4.7mmAl",Canon Infinix CF-I biplane,236,SkinCare,0.92
+"20cm PMMA
+83kVp 7.2mmAl",Canon Infinix CF-I biplane,565,SkinCare,0.88
+"25cm PMMA
+105kVp 6.3mmAl",Canon Infinix CF-I biplane,372,SkinCare,0.93
+"30cm PMMA
+125kVp 7.2mmAl",Canon Infinix CF-I biplane,544,SkinCare,0.83
+PA,Canon Infinix CF-I biplane,442,SkinCare,1.18
+PA LAO,Canon Infinix CF-I biplane,1344,SkinCare,0.77
+PA LAO CRAN,Canon Infinix CF-I biplane,1924,SkinCare,0.66
+LAT,Canon Infinix CF-I biplane,704,SkinCare,0.62
+SP1,Canon Infinix CF-I biplane,1040,SkinCare,0.74
+SP2,Canon Infinix CF-I biplane,1066,SkinCare,0.79
+SP3,Canon Infinix CF-I biplane,970,SkinCare,0.88
+"10cm PMMA
+74kVp 4.6mmAl",Canon Infinix CF-I biplane,140,This Tool,0.88
+"15cm PMMA
+74kVp 4.7mmAl",Canon Infinix CF-I biplane,236,This Tool,0.86
+"20cm PMMA
+83kVp 7.2mmAl",Canon Infinix CF-I biplane,565,This Tool,0.81
+"25cm PMMA
+105kVp 6.3mmAl",Canon Infinix CF-I biplane,372,This Tool,0.99
+"30cm PMMA
+125kVp 7.2mmAl",Canon Infinix CF-I biplane,544,This Tool,0.95
+PA,Canon Infinix CF-I biplane,442,This Tool,1.15
+PA LAO,Canon Infinix CF-I biplane,1344,This Tool,0.81
+PA LAO CRAN,Canon Infinix CF-I biplane,1924,This Tool,0.72
+LAT,Canon Infinix CF-I biplane,704,This Tool,0.69
+SP1,Canon Infinix CF-I biplane,1040,This Tool,0.73
+SP2,Canon Infinix CF-I biplane,1066,This Tool,0.76
+SP3,Canon Infinix CF-I biplane,970,This Tool,0.88
+"10cm PMMA
+74kVp 4.6mmAl",Philips Allura Xper,140,CAATSDOSE,1.42
+"15cm PMMA
+74kVp 4.7mmAl",Philips Allura Xper,236,CAATSDOSE,1.35
+"20cm PMMA
+83kVp 7.2mmAl",Philips Allura Xper,565,CAATSDOSE,1.36
+"25cm PMMA
+105kVp 6.3mmAl",Philips Allura Xper,372,CAATSDOSE,1.34
+"30cm PMMA
+125kVp 7.2mmAl",Philips Allura Xper,544,CAATSDOSE,1.30
+PA,Philips Allura Xper,442,CAATSDOSE,1.18
+PA LAO,Philips Allura Xper,1344,CAATSDOSE,1.43
+PA LAO CRAN,Philips Allura Xper,1924,CAATSDOSE,1.44
+LAT,Philips Allura Xper,704,CAATSDOSE,1.19
+SP1,Philips Allura Xper,1040,CAATSDOSE,1.55
+SP2,Philips Allura Xper,1066,CAATSDOSE,1.16
+SP3,Philips Allura Xper,970,CAATSDOSE,0.86
+"10cm PMMA
+74kVp 4.6mmAl",Philips Allura Xper,140,SDM flat,1.03
+"15cm PMMA
+74kVp 4.7mmAl",Philips Allura Xper,236,SDM flat,0.99
+"20cm PMMA
+83kVp 7.2mmAl",Philips Allura Xper,565,SDM flat,1.01
+"25cm PMMA
+105kVp 6.3mmAl",Philips Allura Xper,372,SDM flat,1.00
+"30cm PMMA
+125kVp 7.2mmAl",Philips Allura Xper,544,SDM flat,1.01
+PA,Philips Allura Xper,442,SDM flat,0.85
+PA LAO,Philips Allura Xper,1344,SDM flat,0.97
+PA LAO CRAN,Philips Allura Xper,1924,SDM flat,0.99
+LAT,Philips Allura Xper,704,SDM flat,
+SP1,Philips Allura Xper,1040,SDM flat,1.13
+SP2,Philips Allura Xper,1066,SDM flat,1.15
+SP3,Philips Allura Xper,970,SDM flat,1.21
+"10cm PMMA
+74kVp 4.6mmAl",Philips Allura Xper,140,DOSE,1.41
+"15cm PMMA
+74kVp 4.7mmAl",Philips Allura Xper,236,DOSE,1.37
+"20cm PMMA
+83kVp 7.2mmAl",Philips Allura Xper,565,DOSE,1.36
+"25cm PMMA
+105kVp 6.3mmAl",Philips Allura Xper,372,DOSE,1.35
+"30cm PMMA
+125kVp 7.2mmAl",Philips Allura Xper,544,DOSE,1.33
+PA,Philips Allura Xper,442,DOSE,1.21
+PA LAO,Philips Allura Xper,1344,DOSE,1.38
+PA LAO CRAN,Philips Allura Xper,1924,DOSE,1.37
+LAT,Philips Allura Xper,704,DOSE,1.09
+SP1,Philips Allura Xper,1040,DOSE,1.44
+SP2,Philips Allura Xper,1066,DOSE,1.14
+SP3,Philips Allura Xper,970,DOSE,1.39
+"10cm PMMA
+74kVp 4.6mmAl",Philips Allura Xper,140,EM.dose,1.14
+"15cm PMMA
+74kVp 4.7mmAl",Philips Allura Xper,236,EM.dose,1.09
+"20cm PMMA
+83kVp 7.2mmAl",Philips Allura Xper,565,EM.dose,1.08
+"25cm PMMA
+105kVp 6.3mmAl",Philips Allura Xper,372,EM.dose,1.05
+"30cm PMMA
+125kVp 7.2mmAl",Philips Allura Xper,544,EM.dose,1.01
+PA,Philips Allura Xper,442,EM.dose,0.93
+PA LAO,Philips Allura Xper,1344,EM.dose,1.14
+PA LAO CRAN,Philips Allura Xper,1924,EM.dose,1.15
+SP1,Philips Allura Xper,1040,EM.dose,1.27
+SP2,Philips Allura Xper,1066,EM.dose,1.49
+SP3,Philips Allura Xper,970,EM.dose,1.38
+"10cm PMMA
+74kVp 4.6mmAl",Philips Allura Xper,140,OpenSkin,1.301106234
+"15cm PMMA
+74kVp 4.7mmAl",Philips Allura Xper,236,OpenSkin,1.230780769
+"20cm PMMA
+83kVp 7.2mmAl",Philips Allura Xper,565,OpenSkin,1.221183552
+"25cm PMMA
+105kVp 6.3mmAl",Philips Allura Xper,372,OpenSkin,1.167819289
+"30cm PMMA
+125kVp 7.2mmAl",Philips Allura Xper,544,OpenSkin,1.146048171
+PA,Philips Allura Xper,442,OpenSkin,1.048631772
+PA LAO,Philips Allura Xper,1344,OpenSkin,0.714487505
+PA LAO CRAN,Philips Allura Xper,1924,OpenSkin,0.831568199
+SP1,Philips Allura Xper,1040,OpenSkin,1.402529753
+SP2,Philips Allura Xper,1066,OpenSkin,1.033590949
+SP3,Philips Allura Xper,970,OpenSkin,1.108346731
+"10cm PMMA
+74kVp 4.6mmAl",Philips Allura Xper,140,SkinCare,1.00
+"15cm PMMA
+74kVp 4.7mmAl",Philips Allura Xper,236,SkinCare,0.96
+"20cm PMMA
+83kVp 7.2mmAl",Philips Allura Xper,565,SkinCare,0.96
+"25cm PMMA
+105kVp 6.3mmAl",Philips Allura Xper,372,SkinCare,0.96
+"30cm PMMA
+125kVp 7.2mmAl",Philips Allura Xper,544,SkinCare,0.96
+PA,Philips Allura Xper,442,SkinCare,0.84
+PA LAO,Philips Allura Xper,1344,SkinCare,1.00
+PA LAO CRAN,Philips Allura Xper,1924,SkinCare,1.01
+LAT,Philips Allura Xper,704,SkinCare,1.23
+SP1,Philips Allura Xper,1040,SkinCare,1.45
+SP2,Philips Allura Xper,1066,SkinCare,1.28
+SP3,Philips Allura Xper,970,SkinCare,1.24
+"10cm PMMA
+74kVp 4.6mmAl",Philips Allura Xper,140,SDM ICRP,0.97
+"15cm PMMA
+74kVp 4.7mmAl",Philips Allura Xper,236,SDM ICRP,0.93
+"20cm PMMA
+83kVp 7.2mmAl",Philips Allura Xper,565,SDM ICRP,0.95
+"25cm PMMA
+105kVp 6.3mmAl",Philips Allura Xper,372,SDM ICRP,0.94
+"30cm PMMA
+125kVp 7.2mmAl",Philips Allura Xper,544,SDM ICRP,0.95
+PA,Philips Allura Xper,442,SDM ICRP,0.85
+PA LAO,Philips Allura Xper,1344,SDM ICRP,0.96
+PA LAO CRAN,Philips Allura Xper,1924,SDM ICRP,0.97
+LAT,Philips Allura Xper,704,SDM ICRP,1.50
+SP1,Philips Allura Xper,1040,SDM ICRP,1.10
+SP2,Philips Allura Xper,1066,SDM ICRP,1.13
+SP3,Philips Allura Xper,970,SDM ICRP,1.17
+"10cm PMMA
+74kVp 4.6mmAl",Philips Allura Xper,140,This Tool,0.84
+"15cm PMMA
+74kVp 4.7mmAl",Philips Allura Xper,236,This Tool,0.87
+"20cm PMMA
+83kVp 7.2mmAl",Philips Allura Xper,565,This Tool,0.87
+"25cm PMMA
+105kVp 6.3mmAl",Philips Allura Xper,372,This Tool,0.85
+"30cm PMMA
+125kVp 7.2mmAl",Philips Allura Xper,544,This Tool,0.93
+PA,Philips Allura Xper,442,This Tool,0.71
+PA LAO,Philips Allura Xper,1344,This Tool,0.84
+PA LAO CRAN,Philips Allura Xper,1924,This Tool,0.84
+LAT,Philips Allura Xper,704,This Tool,0.84
+SP1,Philips Allura Xper,1040,This Tool,1.05
+SP2,Philips Allura Xper,1066,This Tool,1.04
+SP3,Philips Allura Xper,970,This Tool,1.06
