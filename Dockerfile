@@ -4,6 +4,7 @@ FROM rocker/shiny-verse:latest
 # System dependencies
 # ------------------------------------------------------------
 RUN apt-get update && apt-get install -y \
+	patch \
     curl \
     git \
     wget \
