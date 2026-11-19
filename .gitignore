@@ -1,0 +1,19 @@
+# Only the app's source code is tracked. These are kept locally but aren't needed to run the app.
+/Validation/
+/data/
+/quarto_presentation/
+/report.Rmd
+/create Rdata file.R
+/skin reactions.docx
+/skin_reactions.png
+
+# Generated
+python_venv/
+__pycache__/
+Rplots.pdf
+.Rhistory
+.RData
+.Rproj.user/
+windows/node_modules/
+windows/bundle/
+windows/dist/

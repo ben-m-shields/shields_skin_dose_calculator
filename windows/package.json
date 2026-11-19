@@ -1,0 +1,30 @@
+{
+  "name": "shields-skin-dose-calculator",
+  "productName": "Shields Skin Dose Calculator",
+  "version": "1.0.1",
+  "description": "Peak skin dose estimates from fluoroscopy RDSR files",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win zip --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "45.2.3",
+    "electron-builder": "26.18.1"
+  },
+  "build": {
+    "appId": "shields-skin-dose-calculator",
+    "files": ["main.js", "loading.html", "package.json"],
+    "extraResources": [
+      { "from": "bundle/R", "to": "R" },
+      { "from": "bundle/python", "to": "python" },
+      { "from": "bundle/shiny", "to": "shiny" }
+    ],
+    "win": {
+      "target": [{ "target": "zip", "arch": ["x64"] }]
+    },
+    "artifactName": "Shields-Skin-Dose-Calculator-${version}-win-x64.${ext}",
+    "directories": { "output": "dist" }
+  }
+}

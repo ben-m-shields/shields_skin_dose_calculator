@@ -1,0 +1,5 @@
+python_venv/
+.Rhistory
+.Rproj.user/
+Rplots.pdf
+__pycache__/
